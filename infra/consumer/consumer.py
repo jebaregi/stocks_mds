@@ -4,8 +4,8 @@ import boto3
 from kafka import KafkaConsumer
 s3 = boto3.client('s3',
                   endpoint_url='http://host.docker.internal:9002',
-                  aws_access_key_id='admin',
-                  aws_secret_access_key='password123')
+                  aws_access_key_id='xxx',
+                  aws_secret_access_key='xxx')
 bucket_name = 'bronze'
 consumer = KafkaConsumer(
     'stock_quotes',

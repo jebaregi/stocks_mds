@@ -2,7 +2,7 @@ import time
 import json
 import requests
 from kafka import KafkaProducer
-API_kEY = "d60ffj1r01qto1rcubkgd60ffj1r01qto1rcubl0"
+API_kEY = "key"
 BASE_URL = "https://finnhub.io/api/v1/quote"
 SYMBOLS = ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA"]
 
