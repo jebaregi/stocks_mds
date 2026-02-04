@@ -11,12 +11,12 @@ MINIO_SECRET_KEY = "password123"
 BUCKET = "bronze"
 LOCAL_DIR = "/tmp/minio_downloads"  # use absolute path for Airflow
 
-SNOWFLAKE_USER = "jebarozario"
-SNOWFLAKE_PASSWORD = "Jebarozario@14"
-SNOWFLAKE_ACCOUNT = "ebc96974.us-east-1"
-SNOWFLAKE_WAREHOUSE = "COMPUTE_WH"
-SNOWFLAKE_DB = "STOCKS_MDS"
-SNOWFLAKE_SCHEMA = "COMMON"
+SNOWFLAKE_USER = "xxxxxx"
+SNOWFLAKE_PASSWORD = "xxxxxx"
+SNOWFLAKE_ACCOUNT = "xxxxxx"
+SNOWFLAKE_WAREHOUSE = "xxxxxx"
+SNOWFLAKE_DB = "xxxxxxx"
+SNOWFLAKE_SCHEMA = "xxxxxxx"
 
 
 def download_from_minio():
