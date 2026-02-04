@@ -1,0 +1,74 @@
+[2026-02-04T04:49:36.000+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-02-04T04:49:36.044+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: minio_to_snowflake.load_snowflake scheduled__2026-02-03T22:23:00+00:00 [queued]>
+[2026-02-04T04:49:36.059+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: minio_to_snowflake.load_snowflake scheduled__2026-02-03T22:23:00+00:00 [queued]>
+[2026-02-04T04:49:36.061+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2026-02-04T04:49:36.084+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): load_snowflake> on 2026-02-03 22:23:00+00:00
+[2026-02-04T04:49:36.117+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'minio_to_snowflake', 'load_snowflake', 'scheduled__2026-02-03T22:23:00+00:00', '--job-id', '475', '--raw', '--subdir', 'DAGS_FOLDER/minio-snowflake.py', '--cfg-path', '/tmp/tmpmwhl2ghx']
+[2026-02-04T04:49:36.125+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:62 DeprecationWarning: This process (pid=82902) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-02-04T04:49:36.129+0000] {standard_task_runner.py:91} INFO - Job 475: Subtask load_snowflake
+[2026-02-04T04:49:36.137+0000] {standard_task_runner.py:64} INFO - Started process 82927 to run task
+[2026-02-04T04:49:36.226+0000] {task_command.py:426} INFO - Running <TaskInstance: minio_to_snowflake.load_snowflake scheduled__2026-02-03T22:23:00+00:00 [running]> on host 41904ffa35ec
+[2026-02-04T04:49:36.356+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='minio_to_snowflake' AIRFLOW_CTX_TASK_ID='load_snowflake' AIRFLOW_CTX_EXECUTION_DATE='2026-02-03T22:23:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-02-03T22:23:00+00:00'
+[2026-02-04T04:49:36.358+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-02-04T04:49:36.396+0000] {connection.py:408} INFO - Snowflake Connector for Python Version: 3.11.0, Python Version: 3.12.4, Platform: Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[2026-02-04T04:49:36.398+0000] {connection.py:1258} INFO - This connection is in OCSP Fail Open Mode. TLS Certificates would be checked for validity and revocation status. Any other Certificate Revocation related exceptions or OCSP Responder failures would be disregarded in favor of connectivity.
+[2026-02-04T04:49:37.889+0000] {logging_mixin.py:188} INFO - Uploaded /tmp/minio_downloads/1770141223.json to Snowflake stage
+[2026-02-04T04:49:38.236+0000] {logging_mixin.py:188} INFO - Uploaded /tmp/minio_downloads/1770141232.json to Snowflake stage
+[2026-02-04T04:49:38.643+0000] {logging_mixin.py:188} INFO - Uploaded /tmp/minio_downloads/1770141241.json to Snowflake stage
+[2026-02-04T04:49:38.750+0000] {logging_mixin.py:188} INFO - Uploaded /tmp/minio_downloads/1770141249.json to Snowflake stage
+[2026-02-04T04:49:38.861+0000] {logging_mixin.py:188} INFO - Uploaded /tmp/minio_downloads/1770141259.json to Snowflake stage
+[2026-02-04T04:49:39.070+0000] {logging_mixin.py:188} INFO - Uploaded /tmp/minio_downloads/1770141269.json to Snowflake stage
+[2026-02-04T17:11:54.781+0000] {connectionpool.py:824} WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /f5cf1000-s/tables/5813611897602058/1770141280.json.gz
+[2026-02-04T17:11:59.328+0000] {file_transfer_agent.py:606} ERROR - An exception was raised in <bound method SnowflakeStorageClient.prepare_upload of <snowflake.connector.s3_storage_client.SnowflakeS3RestClient object at 0x7fc8388e3f80>>
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/file_transfer_agent.py", line 603, in function_and_callback_wrapper
+    work(*args, **kwargs),
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/storage_client.py", line 223, in prepare_upload
+    self.preprocess()
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/storage_client.py", line 189, in preprocess
+    file_header = self.get_file_header(
+                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/s3_storage_client.py", line 416, in get_file_header
+    response.raise_for_status()
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/vendored/requests/models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+snowflake.connector.vendored.requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://sfc-va4-ds1-42-customer-stage.s3.us-east-1.amazonaws.com/f5cf1000-s/tables/5813611897602058/1770141280.json.gz
+[2026-02-04T17:11:59.832+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-02-04T17:11:59.875+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/minio-snowflake.py", line 58, in load_to_snowflake
+    cur.execute(f"PUT file://{f} @%bronze_stocks_quotes_raw")
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/cursor.py", line 1047, in execute
+    data = sf_file_transfer_agent.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/file_transfer_agent.py", line 740, in result
+    Error.errorhandler_wrapper(
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/errors.py", line 290, in errorhandler_wrapper
+    handed_over = Error.hand_to_other_handler(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/errors.py", line 345, in hand_to_other_handler
+    cursor.errorhandler(connection, cursor, error_class, error_value)
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/errors.py", line 221, in default_errorhandler
+    raise error_class(
+snowflake.connector.errors.OperationalError: 253003: 253003: While putting file(s) there was an error: 'HTTPError('400 Client Error: Bad Request for url: https://sfc-va4-ds1-42-customer-stage.s3.us-east-1.amazonaws.com/f5cf1000-s/tables/5813611897602058/1770141280.json.gz')', this might be caused by your access to the blob storage provider, or by Snowflake.
+[2026-02-04T17:11:59.990+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=minio_to_snowflake, task_id=load_snowflake, run_id=scheduled__2026-02-03T22:23:00+00:00, execution_date=20260203T222300, start_date=20260204T044936, end_date=20260204T171159
+[2026-02-04T17:12:00.138+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 475 for task load_snowflake (253003: 253003: While putting file(s) there was an error: 'HTTPError('400 Client Error: Bad Request for url: https://sfc-va4-ds1-42-customer-stage.s3.us-east-1.amazonaws.com/f5cf1000-s/tables/5813611897602058/1770141280.json.gz')', this might be caused by your access to the blob storage provider, or by Snowflake.; 82927)
+[2026-02-04T17:12:00.237+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 1
+[2026-02-04T17:12:00.332+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-02-04T17:12:00.390+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
