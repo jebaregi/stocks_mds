@@ -6,8 +6,8 @@ from airflow.operators.python import PythonOperator
 from datetime import datetime, timedelta
 
 MINIO_ENDPOINT = "http://minio:9000"
-MINIO_ACCESS_KEY = "admin"
-MINIO_SECRET_KEY = "password123"
+MINIO_ACCESS_KEY = "xxxxx"
+MINIO_SECRET_KEY = "xxxxx"
 BUCKET = "bronze"
 LOCAL_DIR = "/tmp/minio_downloads"  # use absolute path for Airflow
 
